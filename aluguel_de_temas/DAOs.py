@@ -47,7 +47,7 @@ class DaosRent:
         rent = Rent.objects.all()
         return rent
     
-    def salvarrent(street, number, complement, district, city, state, date, start_hours, end_hours, client_id, theme_id):
+    def salvarrent(street, number, complement, district, city, state, date, start_hours, end_hours, client_id, theme_id, calculardesconto, descontodata):
         a = Address(street=street,
                     number=number,
                     complement=complement,
@@ -61,10 +61,11 @@ class DaosRent:
                  end_hours=end_hours,
                  client_id=client_id,
                  theme_id=theme_id,
-                 address = a)
+                 address = a
+                 )
         
         r.price = r.theme.price
-        r.price = BusinessObject.descontodata(r.date)
+        r.price = calculardesconto(r.client) + descontodata(r.date)
         r.save()
     
     def deletarrent(id):

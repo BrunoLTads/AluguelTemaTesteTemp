@@ -177,6 +177,7 @@ class RentViews:
         return render(request, 'rent/formRent.html', context)
     
     def saveRent(request):
+
         DaosRent.salvarrent(street = request.POST['street'],
                  number = request.POST['number'],
                  complement = request.POST['complement'], 
@@ -187,7 +188,8 @@ class RentViews:
                  start_hours=request.POST['start_hours'],
                  end_hours=request.POST['end_hours'],
                  client_id= request.POST['select_client'],
-                 theme_id = request.POST['select_theme'],)
+                 theme_id = request.POST['select_theme'],
+                 )
         return redirect('/listRent')
 
     #Deleta um aluguel e volta para listagem de alugueis
