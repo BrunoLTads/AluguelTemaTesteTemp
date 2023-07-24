@@ -46,7 +46,7 @@ class DaosRent:
         rent = Rent.objects.all()
         return rent
     
-    def salvarrent(street, number, complement, district, city, state, date, start_hours, end_hours, client_id, theme_id, price):
+    def salvarrent(street, number, complement, district, city, state, date, start_hours, end_hours, client_id, theme_id):
         a = Address(street=street,
                     number=number,
                     complement=complement,
