@@ -9,7 +9,13 @@ class BusinessObject:
         client_id = Client.objects.get(pk=client_id)
         if client_id.rents.count() > 1:
             #return Theme.price == Theme.price - (Theme.price * 0.1)
-            return 0.1
+            return Theme.price - 0.1
         else:
-            return 1
+            return 0
             #return Theme.price
+    def descontodata(data):
+        data = datetime.strptime(data, '%Y-%m-%d')
+        if data.weekday() < 0 and data.weekday() > 5:
+            return Theme.price - 0.40
+        else:
+            return 0

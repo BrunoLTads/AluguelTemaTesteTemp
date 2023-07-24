@@ -1,3 +1,4 @@
+from .BusinessObject import *
 from .models import *
 
 class DAOsClient:
@@ -63,7 +64,7 @@ class DaosRent:
                  address = a)
         
         r.price = r.theme.price
-
+        r.price = BusinessObject.descontodata(r.date)
         r.save()
     
     def deletarrent(id):
